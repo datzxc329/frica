@@ -2,43 +2,7 @@
 <!--???-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <?php
-//require_once 'models/connection.php'; // Include your DB class definition
-//
-//if (isset($_POST['query'])) {
-//    $inpText = $_POST['query'];
-//    $db = DB::getInstance(); // Use your DB class to get a database connection
-//
-//    // For searching products by name
-//    $productSql = 'SELECT name FROM product WHERE name LIKE :name';
-//    $productStmt = $db->prepare($productSql);
-//    $productStmt->execute(['name' => '%' . $inpText . '%']);
-//    $productResult = $productStmt->fetchAll();
-//
-//    // For searching categories by name
-//    $categorySql = 'SELECT name FROM category WHERE name LIKE :name';
-//    $categoryStmt = $db->prepare($categorySql);
-//    $categoryStmt->execute(['name' => '%' . $inpText . '%']);
-//    $categoryResult = $categoryStmt->fetchAll();
-//
-//    if ($productResult || $categoryResult) {
-//        echo '<ul>';
-//
-//        // Display product results
-//        foreach ($productResult as $productRow) {
-//            echo '<li>' . $productRow['name'] . ' (Product)</li>';
-//        }
-//
-//        // Display category results
-//        foreach ($categoryResult as $categoryRow) {
-//            echo '<li>' . $categoryRow['name'] . ' (Category)</li>';
-//        }
-//
-//        echo '</ul>';
-//    } else {
-//        echo '<p class="list-group-item border-1">Không tìm thấy sản phẩm</p>';
-//    }
-//}
-//?>
+?>
 
 <div class="computers_section layout_padding">
     <div class="container">

@@ -35,10 +35,5 @@ class SearchController extends BaseController
         //print_r($data);
         $this->render('search', $data);
     }
-//    public function autocomplete(){
-//        $suggestions = Product::getProductName();
-//        $data = array('allProducts' => $allProducts);
-//        $this->render('index', $data);
-//    }
 
 }

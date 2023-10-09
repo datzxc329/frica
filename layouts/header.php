@@ -109,32 +109,32 @@
                             </li>
                         </ul>
                         <div class="search-form" id="searchForm">
-                            <input type="text" name="query" id="search" placeholder="Tìm kiếm...">
+                            <input type="text" name="query" id="search-box" placeholder="Tìm kiếm...">
                             <input type="hidden" name="controller" value="search">
                             <input type="hidden" name="action" value="search">
                             <button type="submit"><img src="/hl/asset/images/search-icon.png"></button>
                         </div>
-                        <div id="suggestions"></div>
+                        <div id="suggestions-box"></div>
                     </div>
 
                 </form>
         </div>
         <script>
 
-            $(function(){
-                $("#search").keyup(function(){
-                    var searchName = $(this).val();
-                    $.ajax({
-                        method: "POST",
-                        url: "getCountry.php",
-                        data:{search:searchName}
-                    })
-                    .done(function(data){
-                            $("#suggestions").show();
-                            $("#suggestions").html(data);
-                    });
-                });
-            });
+            // $(function(){
+            //     $("#search-box").keyup(function(){
+            //         var searchName = $(this).val();
+            //         $.ajax({
+            //             method: "POST",
+            //             url: "../controllers/SearchController.php",
+            //             data:{search-box:searchName}
+            //         })
+            //         .done(function(data){
+            //                 $("#suggestions-box").show();
+            //                 $("#suggestions-box").html(data);
+            //         });
+            //     });
+            // });
 
             var searchForm = document.getElementById('searchForm');
             function toggleSearch() {
@@ -256,21 +256,33 @@
     </body>
 </html>
 
-
 <?php
-
-require_once("models/product.php");
-require_once("models/category.php");
-
-if (!empty($_POST['search'])) {
-    $query = "SELECT * FROM countries WHERE country LIKE '" . $_POST['country'] . "%' ORDER BY country";
-    $result = $db->query($query);
-    if (!empty($result)) {
-        echo "<ul id='countries'>";
-        foreach ($result as $country) {
-            echo "<li>" . $country['country'] . "</li>";
-        }
-        echo "</ul>";
-    }
-}
-?>
+//require_once("models/product.php");
+//require_once("models/category.php");
+//
+//// Kiểm tra xem có dữ liệu được gửi từ biểu mẫu POST không
+//if (!empty($_POST['search-box'])) {
+//    // Kết nối đến cơ sở dữ liệu (Bạn cần thay thế thông tin đăng nhập cơ sở dữ liệu của bạn ở đây)
+//    $db = DB::getInstance();
+//
+//    $searchTerm = $_POST['search-box'] . '%'; // Tìm kiếm theo đầu chuỗi
+//    $query = "SELECT p.*, c.*
+//              FROM product p
+//              INNER JOIN category c ON p.idLSP = c.idLSP
+//              WHERE c.name LIKE :name";
+//    $stmt = $db->prepare($query);
+//    $stmt->bindParam(':searchTerm', $searchTerm, PDO::PARAM_STR);
+//    $stmt->execute();
+//
+//    // Kiểm tra xem có kết quả trả về hay không
+//    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+//
+//    if (!empty($result)) {
+//        echo "<ul id='countries'>";
+//        foreach ($result as $country) {
+//            echo "<li>" . $country['country'] . "</li>";
+//        }
+//        echo "</ul>";
+//    }
+//}
+//?>
