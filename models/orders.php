@@ -1,7 +1,7 @@
 <?php
 class Orders
 {
-    public $idOrder;
+    public $idDH;
     public $name;
     public $email;
     public $address;
@@ -9,9 +9,9 @@ class Orders
     public $total_price;
     public $date;
 
-    function __construct($idOrder, $name, $email, $address, $phone, $total_price, $date)
+    function __construct($idDH, $name, $email, $address, $phone, $total_price, $date)
     {
-        $this->idOrder = $idOrder;
+        $this->idDH = $idDH;
         $this->name = $name;
         $this->email = $email;
         $this->address = $address;

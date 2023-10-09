@@ -1,6 +1,7 @@
 <?php
 require_once('controllers/BaseController.php');
 require_once ('models/orders.php');
+require_once ('models/order_details.php');
 require_once ('models/product.php');
 class PaymentsController extends BaseController{
     function __construct()
@@ -42,6 +43,20 @@ class PaymentsController extends BaseController{
 
             // Gọi hàm saveOrder từ model Order để lưu dữ liệu
             Orders::saveOrder($name, $email, $address, $phone, $total_price, $date);
+
+            // Lấy idDH của đơn hàng vừa thêm vào
+            $pdo = DB::getInstance();
+            $idDH = $pdo->lastInsertId();
+
+            // Loop through the cart items and save order details for each item
+            foreach ($cartItems as $productId => $cartItem) {
+                $quantityOrdered = $cartItem->quantity;
+                $unitPrice = $cartItem->price;
+                $unitsPrice = $cartItem->quantity * $cartItem->price;
+
+                // Gọi hàm saveOrderDetail từ model Order_details để lưu dữ liệu
+                Order_details::saveOrderDetail($idDH, $productId, $quantityOrdered, $unitPrice, $unitsPrice);
+            }
 
             // Clear the cart
             unset($_SESSION['cart']);

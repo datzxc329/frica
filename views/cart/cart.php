@@ -65,12 +65,14 @@
         <?php $cartItems = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
         ?>
         <!--mảng kết hợp-->
-        <?php $total_price = 0; ?>
+        <?php
+            $total_price = 0;
+        ?>
         <?php foreach ($cartItems as $productId => $cartItem): ?>
             <?php $total_price += $cartItem->price * $cartItem->quantity; ?>
             <tr>
                 <td><?php echo $cartItem->name; ?></td>
-                <td><?php echo $cartItem->price; ?></td>
+                <td><?php echo $cartItem->price; ?></td> <?php $p = $cartItem->price * $cartItem->quantity; ?>
                 <td>
                     <form action="index.php?controller=cart&action=update_quantity" method="post">
                         <input type="hidden" name="product_id" value="<?php echo $productId; ?>">
@@ -97,21 +99,6 @@
 <br>
 <a href="index.php">Continue Shopping</a>
 <script>
-
-    // // Add an event listener to each quantity input
-    // quantityInputs.forEach(function (input) {
-    //     input.addEventListener('change', function () {
-    //         // Get the product ID from the "data-product-id" attribute of the associated input element
-    //         var productId = input.getAttribute('id');
-    //
-    //         // Get the new quantity from the input field
-    //         var newQuantity = input.value;
-    //
-    //         // For demonstration purposes, we'll just update the quantity displayed on the page
-    //         var quantityDisplay = document.getElementById('quantity-display-' + productId);
-    //         quantityDisplay.textContent = newQuantity;
-    //     });
-    // });
 
     function redirectToPaymentsPage() {
         window.location.href = 'index.php?controller=payments&action=payments';

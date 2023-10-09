@@ -1,6 +1,6 @@
 
 <!--???-->
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <?php
 //require_once 'models/connection.php'; // Include your DB class definition
 //
@@ -52,7 +52,6 @@
                 <!--Chuyển từ cách làm đối tượng thành mảng
                 Cách 2: -->
                 <?php /*print_r($searchProducts);  die("faga");*/?>
-
                 <?php foreach ($searchProducts as $searchProduct): ?>
 <!--                --><?php //print_r($searchProduct) ?>
                     <div class="col-md-4">

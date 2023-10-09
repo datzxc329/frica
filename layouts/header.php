@@ -49,6 +49,33 @@
                 height: 24px; /* Độ cao của biểu tượng */
                 transition: background-color 0.3s ease; /* Hiệu ứng màu nền */
             }
+            body, input {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 12px;
+            }
+
+            #searchs {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 200px;
+            }
+
+            #searchs li {
+                padding: 10px;
+                background: #FFF;
+                border-bottom: #F0F0F0 1px solid;
+            }
+
+            #searchs li:hover {
+                background:#F0F0F0;
+                cursor: pointer;
+                cursor: hand;
+            }
+
+            #search {
+                padding: 10px;
+            }
 
         </style>
 
@@ -82,17 +109,32 @@
                             </li>
                         </ul>
                         <div class="search-form" id="searchForm">
-                            <input type="text" name="query" id="search-box" placeholder="Tìm kiếm...">
+                            <input type="text" name="query" id="search" placeholder="Tìm kiếm...">
                             <input type="hidden" name="controller" value="search">
                             <input type="hidden" name="action" value="search">
                             <button type="submit"><img src="/hl/asset/images/search-icon.png"></button>
                         </div>
-                        <div id="suggestion-box"></div>
+                        <div id="suggestions"></div>
                     </div>
 
                 </form>
         </div>
         <script>
+
+            $(function(){
+                $("#search").keyup(function(){
+                    var searchName = $(this).val();
+                    $.ajax({
+                        method: "POST",
+                        url: "getCountry.php",
+                        data:{search:searchName}
+                    })
+                    .done(function(data){
+                            $("#suggestions").show();
+                            $("#suggestions").html(data);
+                    });
+                });
+            });
 
             var searchForm = document.getElementById('searchForm');
             function toggleSearch() {
@@ -102,8 +144,6 @@
                     searchForm.style.display = 'block';
                 }
             }
-
-
 
             var suggestions = ['computers', 'laptop hp'];
             //var suggestions = <?php //echo json_encode($_SESSION['suggestions']); ?>
@@ -215,3 +255,22 @@
 
     </body>
 </html>
+
+
+<?php
+
+require_once("models/product.php");
+require_once("models/category.php");
+
+if (!empty($_POST['search'])) {
+    $query = "SELECT * FROM countries WHERE country LIKE '" . $_POST['country'] . "%' ORDER BY country";
+    $result = $db->query($query);
+    if (!empty($result)) {
+        echo "<ul id='countries'>";
+        foreach ($result as $country) {
+            echo "<li>" . $country['country'] . "</li>";
+        }
+        echo "</ul>";
+    }
+}
+?>
