@@ -70,7 +70,7 @@
             <?php $total_price += $cartItem->price * $cartItem->quantity; ?>
             <tr>
                 <td><?php echo $cartItem->name; ?></td>
-                <td><?php echo $cartItem->price; ?></td>
+                <td><?php echo $cartItem->price; ?></td> <?php $p = $cartItem->price * $cartItem->quantity; ?>
                 <td>
                     <form action="index.php?controller=cart&action=update_quantity" method="post">
                         <input type="hidden" name="product_id" value="<?php echo $productId; ?>">
