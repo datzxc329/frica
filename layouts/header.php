@@ -29,8 +29,8 @@
         <!-- fonts -->
         <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
         <!-- owl stylesheets -->
-        <link rel="stylesheet" href="/hl/asset/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="/hl/asset/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="/asset/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="/asset/css/owl.theme.default.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
         <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
         <style>

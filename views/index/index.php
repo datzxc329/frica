@@ -1,45 +1,24 @@
-<?php
-?>
-<div class="banner_section layout_padding">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+</style>
+<div class="container">
+    <br>
     <div id="my_slider" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="container">
-                    <div class="row border_1">
-                        <div class="col-md-4">
-                            <div class="image_1"><img src="/hl/asset/images/img-1.png" style="width:100%"></div>
-                        </div>
-                        <div class="col-md-4">
-                            <h1 class="banner_taital">Big Sale Offer</h1>
-                            <div class="buynow_bt active"><a href="index.php?controller=computers&action=computers">Buy Now</a></div>
-                            <div class="contact_bt"><a href="index.php?controller=contact&action=contact">Contact Us</a></div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="image_2"><img src="/hl/asset/images/img-2.png" style="width:100%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row border_1">
-                        <div class="col-md-4">
-                            <div class="image_1"><img src="/hl/asset/images/img-1.png" style="width:100%"></div>
-                        </div>
-                        <div class="col-md-4">
-                            <h1 class="banner_taital">Big Sale Offer</h1>
-                            <div class="buynow_bt active"><a href="index.php?controller=man_clothes&action=man_clothes">Buy Now</a></div>
-                            <div class="contact_bt"><a href="index.php?controller=contact&action=contact">Contact Us</a></div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="image_2"><img src="/hl/asset/images/img-2.png" style="width:100%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row border_1">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#my_slider" data-slide-to="0" class="active"></li>
+            <li data-target="#my_slider" data-slide-to="1"></li>
+            <li data-target="#my_slider" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <div class="container border_1">
+                    <div class="row">
                         <div class="col-md-4">
                             <div class="image_1"><img src="/hl/asset/images/img-1.png" style="width:100%"></div>
                         </div>
@@ -54,15 +33,122 @@
                     </div>
                 </div>
             </div>
+
+            <div class="item">
+                <div class="container border_1">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="image_1"><img src="/hl/asset/images/img-1.png" style="width:100%"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <h1 class="banner_taital">Big ttqyg Offer</h1>
+                            <div class="buynow_bt active"><a href="index.php?controller=woman_clothes&action=woman_clothes">Buy Now</a></div>
+                            <div class="contact_bt"><a href="index.php?controller=contact&action=contact">Contact Us</a></div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="image_2"><img src="/hl/asset/images/img-2.png" style="width:100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="container border_1">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="image_1"><img src="/hl/asset/images/img-1.png" style="width:100%"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <h1 class="banner_taital">Big aesgeag Offer</h1>
+                            <div class="buynow_bt active"><a href="index.php?controller=woman_clothes&action=woman_clothes">Buy Now</a></div>
+                            <div class="contact_bt"><a href="index.php?controller=contact&action=contact">Contact Us</a></div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="image_2"><img src="/hl/asset/images/img-2.png" style="width:100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
-            <i class="fa fa-angle-left"></i>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#my_slider" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
-            <i class="fa fa-angle-right"></i>
+        <a class="right carousel-control" href="#my_slider" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
         </a>
     </div>
 </div>
+
+<!--<div class="banner_section layout_padding">-->
+<!--    <div id="my_slider" class="carousel slide" data-ride="carousel">-->
+<!--        <div class="carousel-inner">-->
+<!--            <div class="carousel-item active">-->
+<!--                <div class="container">-->
+<!--                    <div class="row border_1">-->
+<!--                        <div class="col-md-4">-->
+<!--                            <div class="image_1"><img src="/hl/asset/images/img-1.png" style="width:100%"></div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-4">-->
+<!--                            <h1 class="banner_taital">Big Sale Offer</h1>-->
+<!--                            <div class="buynow_bt active"><a href="index.php?controller=computers&action=computers">Buy Now</a></div>-->
+<!--                            <div class="contact_bt"><a href="index.php?controller=contact&action=contact">Contact Us</a></div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-4">-->
+<!--                            <div class="image_2"><img src="/hl/asset/images/img-2.png" style="width:100%"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="carousel-item">-->
+<!--                <div class="container">-->
+<!--                    <div class="row border_1">-->
+<!--                        <div class="col-md-4">-->
+<!--                            <div class="image_1"><img src="/hl/asset/images/img-1.png" style="width:100%"></div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-4">-->
+<!--                            <h1 class="banner_taital">Big Sale Offer</h1>-->
+<!--                            <div class="buynow_bt active"><a href="index.php?controller=man_clothes&action=man_clothes">Buy Now</a></div>-->
+<!--                            <div class="contact_bt"><a href="index.php?controller=contact&action=contact">Contact Us</a></div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-4">-->
+<!--                            <div class="image_2"><img src="/hl/asset/images/img-2.png" style="width:100%"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="carousel-item">-->
+<!--                <div class="container">-->
+<!--                    <div class="row border_1">-->
+<!--                        <div class="col-md-4">-->
+<!--                            <div class="image_1"><img src="/hl/asset/images/img-1.png" style="width:100%"></div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-4">-->
+<!--                            <h1 class="banner_taital">Big Sale Offer</h1>-->
+<!--                            <div class="buynow_bt active"><a href="index.php?controller=woman_clothes&action=woman_clothes">Buy Now</a></div>-->
+<!--                            <div class="contact_bt"><a href="index.php?controller=contact&action=contact">Contact Us</a></div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-4">-->
+<!--                            <div class="image_2"><img src="/hl/asset/images/img-2.png" style="width:100%"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">-->
+<!--            <i class="fa fa-angle-left"></i>-->
+<!--        </a>-->
+<!--        <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">-->
+<!--            <i class="fa fa-angle-right"></i>-->
+<!--        </a>-->
+<!--    </div>-->
+<!--</div>-->
+
+
 <!-- banner section end -->
 <!-- catagary section start -->
 <div class="catagary_section layout_padding">
@@ -76,9 +162,9 @@
                     <ul>
                         <li><a href="index.php?controller=man_clothes&action=man_clothes">Man's Fashion</a></li>
                         <li><a href="index.php?controller=woman_clothes&action=woman_clothes">Woman Fashion</a></li>
-                        <li><a href="#">Mobiles</a></li>
+                        <li><a href="index.php?controller=other_products&action=other_products">Mobiles</a></li>
                         <li><a href="index.php?controller=computers&action=computers">Computers</a></li>
-                        <li><a href="#">Watchs</a></li>
+                        <li><a href="index.php?controller=other_products&action=other_products">Watches</a></li>
                         <li><a href="#">Kitchen</a></li>
                         <li><a href="#">Sports</a></li>
                     </ul>
@@ -204,3 +290,8 @@
 </div>
 <!-- womans clothes section end -->
 
+<!--<script>-->
+<!--    $(document).ready(function() {-->
+<!--        $('#my_slider').carousel();-->
+<!--    });-->
+<!--</script>-->
