@@ -19,7 +19,6 @@ class User
         $this->email = $email;
         $this->address = $address;
     }
-
     static function checkLogin($data){
         try {
             //checkLogin: kiểm tra nếu có dữ liệu tài khoản trong database thì đăng nhập vào.
@@ -52,21 +51,19 @@ class User
             throw $e;
         }
     }
-
     static function saveSignup($data)
     {
         try {
             $pdo = DB::getInstance();
             $sql1 = "SELECT COUNT(*) FROM user WHERE username = :username";
             $stmt1 = $pdo->prepare($sql1);
-            $stmt1->bindParam(':username', $username, PDO::PARAM_STR);
+            $stmt1->bindParam(':username', $data['username'], PDO::PARAM_STR);
             $stmt1->execute();
             $count = $stmt1->fetchColumn();
             if ($count == 0) {
                 // Chuẩn bị truy vấn SQL
                 $sql2 = "INSERT INTO user (username, password, name, phone, email, address) VALUES (:username, :password, :name, :phone, :email, :address)";
                 try {
-                    // Sử dụng PDO để thực hiện truy vấn SQL
                     $stmt2 = $pdo->prepare($sql2);
                     $stmt2->bindParam(":username", $data['username']);
                     $stmt2->bindParam(":password", $data['password']);
@@ -81,10 +78,8 @@ class User
             } else {
                 return false;
             }
-        }catch (PDOException $e) {
-            throw $e;
+        } catch (PDOException $e) {
+                throw $e;
         }
     }
-
-
 }

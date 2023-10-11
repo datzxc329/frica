@@ -159,5 +159,15 @@ class Product
             throw $e;
         }
     }
+    static function getProductsLimited($limit, $offset) {
+        $db = DB::getInstance();
+        $sql = "SELECT * FROM product LIMIT :limit OFFSET :offset";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+        $items = $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $items;
+    }
 
 }

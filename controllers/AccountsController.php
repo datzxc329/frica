@@ -42,35 +42,29 @@ class AccountsController extends BaseController
     public function profile(){
 
     }
-    public function signup()
-    {
+    public function signup(){
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // Lấy dữ liệu từ form
-            $username = $_POST["username"];
-            // Check if the username already exists
-            if (User::isUsernameTaken($username)) {
+        // Lấy dữ liệu từ form
+            $signupData = [
+                'username' => $_POST["username"],
+                'password' => $_POST["password"],
+                'name' => $_POST["name"],
+                'phone' => $_POST["phone"],
+                'email' => $_POST["email"],
+                'address' => $_POST["address"],
+            ];
+            if(User::saveSignup($signupData)){
+                header("Location: index.php?controller=accounts&action=successsignup");
+            }else{
                 echo '<script>alert("Tài khoản đã tồn tại!");</script>';
                 $this->render('signup');
-            } else {
-                $signupData = [
-                    'username' => $username,
-                    'password' => $_POST["password"],
-                    'name' => $_POST["name"],
-                    'phone' => $_POST["phone"],
-                    'email' => $_POST["email"],
-                    'address' => $_POST["address"],
-                ];
-                if (User::saveSignup($signupData)) {
-                    header("Location: index.php?controller=accounts&action=successsignup");
-                } else {
-                    echo '<script>alert("Lỗi khi lưu tài khoản!");</script>';
-                    $this->render('signup');
-                }
             }
         } else {
+            // Nếu không phải phương thức POST, hiển thị form
             $this->render('signup');
         }
     }
+
     public function forgotpassword(){
         $this->render('forgotpassword');
     }
@@ -87,4 +81,5 @@ class AccountsController extends BaseController
     {
         $this->render('successchangepw');
     }
+
 }

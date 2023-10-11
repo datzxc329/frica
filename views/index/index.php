@@ -110,12 +110,15 @@
         <h1 class="computers_taital">All product</h1>
     </div>
 </div>
+<?php
+$productsPerPage = 6;
+$totalPages = ceil($totalProducts / $productsPerPage);
+?>
 <div class="computers_section_2">
     <div class="container-fluid">
         <div class="computer_main">
             <div class="row">
                 <!-- Ở đây là làm với kiểu đối tượng-->
-
                 <?php foreach ($allProducts as $allProduct): ?>
                     <div class="col-md-4">
                         <div class="computer_img">
@@ -141,8 +144,26 @@
                         <div class="cart_bt_1"><a href="index.php?controller=cart&action=cart&idSP=<?php echo $allProduct->idSP; ?>">Add To Cart</a></div>
                     </div>
                 <?php endforeach; ?>
-                <button id="prevBtn">Prev</button>
-                <button id="nextBtn">Next</button>
+
+                <div class="pagination">
+                    <?php if ($totalPages > 1): ?>
+                        <?php if ($current_page > 1): ?>
+                            <a href="?page=<?php echo $current_page - 1; ?>">Previous</a>
+                        <?php endif; ?>
+
+                        <?php for ($page = 1; $page <= $totalPages; $page++): ?>
+                            <?php if ($page == $current_page): ?>
+                                <span class="current-page"><?php echo $page; ?></span>
+                            <?php else: ?>
+                                <a href="?page=<?php echo $page; ?>"><?php echo $page; ?></a>
+                            <?php endif; ?>
+                        <?php endfor; ?>
+
+                        <?php if ($current_page < $totalPages): ?>
+                            <a href="?page=<?php echo $current_page + 1; ?>">Next</a>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </div>

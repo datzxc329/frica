@@ -9,19 +9,16 @@ class SearchController extends BaseController
     function __construct()
     {
         $this->folder = 'search';
-
     }
     public function search(){
         $query = isset($_GET['query']) ? $_GET['query'] : '';
         $searchProducts = Product::searchWithProductName($query);
         $searchCategories = Category::searchWithCategoryName($query);
-
         $suggestions = [];
         //Thêm tên sản phẩm từ kết quả tìm kiếm vào mảng suggestions
         foreach ($searchProducts as $product) {
             $suggestions[] = $product['name'];
         }
-
         // Thêm tên loại sản phẩm từ kết quả tìm kiếm vào mảng suggestions
         foreach ($searchCategories as $category) {
             $suggestions[] = $category['name'];
