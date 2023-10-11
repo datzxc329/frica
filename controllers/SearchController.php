@@ -27,7 +27,7 @@ class SearchController extends BaseController
             $suggestions[] = $category['name'];
         }
         $_SESSION['suggestions'] = $suggestions;
-        print_r(json_encode($_SESSION['suggestions']));
+        //print_r(json_encode($_SESSION['suggestions']));
         $data = array(
             'searchProducts' => $searchProducts,
             'searchCategories' => $searchCategories,

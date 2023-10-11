@@ -69,9 +69,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
         <!-- Left and right controls -->
         <a class="left carousel-control" href="#my_slider" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -84,91 +82,22 @@
     </div>
 </div>
 
-<!--<div class="banner_section layout_padding">-->
-<!--    <div id="my_slider" class="carousel slide" data-ride="carousel">-->
-<!--        <div class="carousel-inner">-->
-<!--            <div class="carousel-item active">-->
-<!--                <div class="container">-->
-<!--                    <div class="row border_1">-->
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="image_1"><img src="/hl/asset/images/img-1.png" style="width:100%"></div>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <h1 class="banner_taital">Big Sale Offer</h1>-->
-<!--                            <div class="buynow_bt active"><a href="index.php?controller=computers&action=computers">Buy Now</a></div>-->
-<!--                            <div class="contact_bt"><a href="index.php?controller=contact&action=contact">Contact Us</a></div>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="image_2"><img src="/hl/asset/images/img-2.png" style="width:100%"></div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="carousel-item">-->
-<!--                <div class="container">-->
-<!--                    <div class="row border_1">-->
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="image_1"><img src="/hl/asset/images/img-1.png" style="width:100%"></div>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <h1 class="banner_taital">Big Sale Offer</h1>-->
-<!--                            <div class="buynow_bt active"><a href="index.php?controller=man_clothes&action=man_clothes">Buy Now</a></div>-->
-<!--                            <div class="contact_bt"><a href="index.php?controller=contact&action=contact">Contact Us</a></div>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="image_2"><img src="/hl/asset/images/img-2.png" style="width:100%"></div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="carousel-item">-->
-<!--                <div class="container">-->
-<!--                    <div class="row border_1">-->
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="image_1"><img src="/hl/asset/images/img-1.png" style="width:100%"></div>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <h1 class="banner_taital">Big Sale Offer</h1>-->
-<!--                            <div class="buynow_bt active"><a href="index.php?controller=woman_clothes&action=woman_clothes">Buy Now</a></div>-->
-<!--                            <div class="contact_bt"><a href="index.php?controller=contact&action=contact">Contact Us</a></div>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-4">-->
-<!--                            <div class="image_2"><img src="/hl/asset/images/img-2.png" style="width:100%"></div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">-->
-<!--            <i class="fa fa-angle-left"></i>-->
-<!--        </a>-->
-<!--        <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">-->
-<!--            <i class="fa fa-angle-right"></i>-->
-<!--        </a>-->
-<!--    </div>-->
-<!--</div>-->
-
-
 <!-- banner section end -->
 <!-- catagary section start -->
 <div class="catagary_section layout_padding">
     <div class="container">
         <div class="catagary_main">
-            <div class="catagary_left">
-                <h2 class="categary_text">Category</h2>
-            </div>
-            <div class="catagary_right">
-                <div class="catagary_menu">
-                    <ul>
-                        <li><a href="index.php?controller=man_clothes&action=man_clothes">Man's Fashion</a></li>
-                        <li><a href="index.php?controller=woman_clothes&action=woman_clothes">Woman Fashion</a></li>
-                        <li><a href="index.php?controller=other_products&action=other_products">Mobiles</a></li>
-                        <li><a href="index.php?controller=computers&action=computers">Computers</a></li>
-                        <li><a href="index.php?controller=other_products&action=other_products">Watches</a></li>
-                        <li><a href="#">Kitchen</a></li>
-                        <li><a href="#">Sports</a></li>
-                    </ul>
-                </div>
+            <h2 class="categary_text">Category<br><br></h2>
+            <div class="catagary_menu">
+                <ul>
+                    <li><a href="index.php?controller=man_clothes&action=man_clothes">Man's Fashion</a></li>
+                    <li><a href="index.php?controller=woman_clothes&action=woman_clothes">Woman Fashion</a></li>
+                    <li><a href="index.php?controller=other_products&action=other_products">Mobiles</a></li>
+                    <li><a href="index.php?controller=computers&action=computers">Computers</a></li>
+                    <li><a href="index.php?controller=other_products&action=other_products">Watches</a></li>
+                    <li><a href="index.php?controller=other_products&action=other_products">Kitchen</a></li>
+                    <li><a href="index.php?controller=other_products&action=other_products">Sports</a></li>
+                </ul>
             </div>
         </div>
     </div>
@@ -186,18 +115,34 @@
         <div class="computer_main">
             <div class="row">
                 <!-- Ở đây là làm với kiểu đối tượng-->
+
                 <?php foreach ($allProducts as $allProduct): ?>
                     <div class="col-md-4">
-                        <div class="computer_img"><img src="/hl/asset/images/<?php echo $allProduct->img; ?>"></div>
-                        <h4 class="computer_text"><?php echo $allProduct->name; ?></h4>
+                        <div class="computer_img">
+                            <!-- Thêm đường dẫn đến trang chi tiết sản phẩm -->
+                            <a href="index.php?controller=product_detail&action=product_detail&idSP=<?php echo $allProduct->idSP; ?>">
+                                <img src="/hl/asset/images/<?php echo $allProduct->img; ?>">
+                            </a>
+                        </div>
+                        <h4 class="computer_text">
+                            <!-- Thêm đường dẫn đến trang chi tiết sản phẩm -->
+                            <a href="index.php?controller=product_detail&action=product_detail&idSP=<?php echo $allProduct->idSP; ?>">
+                                <?php echo $allProduct->name; ?>
+                            </a>
+                        </h4>
                         <div class="computer_text_main">
-                            <h4 class="dell_text"><?php echo "Còn lại: " . $allProduct->quantity; ?></h4>
-                            <h6 class="price_text"><?php echo "Giá: " . $allProduct->price; ?>VNĐ</h6>
-                            <!-- Thêm các thông tin khác của sản phẩm -->
+                            <h4 class="dell_text">
+                                <?php echo "Còn lại: " . $allProduct->quantity; ?>
+                            </h4>
+                            <h6 class="price_text">
+                                <?php echo "Giá: " . number_format($allProduct->price) . " VNĐ"; ?>
+                            </h6>
                         </div>
                         <div class="cart_bt_1"><a href="index.php?controller=cart&action=cart&idSP=<?php echo $allProduct->idSP; ?>">Add To Cart</a></div>
                     </div>
                 <?php endforeach; ?>
+                <button id="prevBtn">Prev</button>
+                <button id="nextBtn">Next</button>
             </div>
         </div>
     </div>
@@ -224,7 +169,6 @@
         </div>
     </div>
 </div>
-
 <!-- computers section start -->
 <div class="computers_section layout_padding">
     <div class="container">
@@ -288,10 +232,105 @@
         </div>
     </div>
 </div>
-<!-- womans clothes section end -->
+<script>
+    var currentPage = 1;
+    var totalPages = 1;
+    // JavaScript code
+    document.addEventListener("DOMContentLoaded", function () {
+        // Khi trang được tải
+        loadProducts(1); // Tải sản phẩm cho trang đầu tiên
+        // Xử lý sự kiện khi nhấn vào nút Prev
+        document.getElementById("prevBtn").addEventListener("click", function (){
+           if(currentPage > 1){
+               loadProducts(currentPage - 1);
+           }
+        });
+        // Xử lý sự kiện khi nhấn vào nút Next
+        document.getElementById("nextBtn").addEventListener("click", function () {
+            if (currentPage < totalPages) {
+                loadProducts(currentPage + 1);
+            }
+        });
+    });
+    function loadProducts(page) {
+        // Sử dụng AJAX để tải danh sách sản phẩm cho trang mới
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "index.php?page=" + page, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Nếu thành công, cập nhật danh sách sản phẩm
+                document.getElementById("productList").innerHTML = xhr.responseText;
+                currentPage = page;
+            }
+        };
+        xhr.send();
+    }
+    $(document).ready(function() {
+        $('#my_slider').carousel();
+    });
+</script>
 
-<!--<script>-->
-<!--    $(document).ready(function() {-->
-<!--        $('#my_slider').carousel();-->
-<!--    });-->
-<!--</script>-->
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+//// Sử dụng các biến $_GET để lấy trang hiện tại và xử lý logic phân trang
+//if (isset($_GET['page'])) {
+//    $currentPage = intval($_GET['page']);
+//} else {
+//    $currentPage = 1;
+//}
+//
+//// Xử lý logic phân trang ở đây và trả về danh sách sản phẩm cho trang mới
+//$itemsPerPage = 6; // Số sản phẩm trên mỗi trang
+//$totalItems = 50; // Tổng số sản phẩm (thay thế bằng số thực tế)
+//$totalPages = ceil($totalItems / $itemsPerPage); // Tổng số trang
+//
+//// Xác định sản phẩm bắt đầu và kết thúc trên trang hiện tại
+//$startItem = ($currentPage - 1) * $itemsPerPage;
+//$endItem = min($startItem + $itemsPerPage - 1, $totalItems - 1);
+//
+//// Hiển thị danh sách sản phẩm trên trang mới
+//echo '<div class="row">';
+//for ($i = $startItem; $i <= $endItem; $i++) {
+//    // Hiển thị sản phẩm tại đây, giống như bạn đã làm
+//    echo '<div class="col-md-4">';
+//    echo '<div class="computer_img">';
+//    echo '<a href="index.php?controller=product_detail&action=product_detail&idSP=' . $i . '">';
+//    echo '<img src="/hl/asset/images/' . $i . '.jpg">';
+//    echo '</a>';
+//    echo '</div>';
+//    echo '<h4 class="computer_text">';
+//    echo '<a href="index.php?controller=product_detail&action=product_detail&idSP=' . $i . '">';
+//    echo 'Sản phẩm ' . ($i + 1);
+//    echo '</a>';
+//    echo '</h4>';
+//    echo '</div>';
+//}
+//echo '</div>';
+//
+//// Tạo nút Prev (Trang trước)
+//if ($currentPage > 1) {
+//    echo '<button id="prevBtn">Prev</button>';
+//}
+//
+//// Hiển thị các trang
+//echo '<div>';
+//for ($i = 1; $i <= $totalPages; $i++) {
+//    if ($i == $currentPage) {
+//        echo '<span>' . $i . '</span>';
+//    } else {
+//        echo '<button class="pageBtn" data-page="' . $i . '">' . $i . '</button>';
+//    }
+//}
+//echo '</div>';
+

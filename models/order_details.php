@@ -17,29 +17,24 @@ class Order_details
         $this->unit_price = $unit_price;
         $this->units_price = $units_price;
     }
-    static function saveOrderDetail($idDH, $idSP, $quantity, $unit_price, $units_price){
+    static function saveOrderDetail($data){
         // Kết nối đến cơ sở dữ liệu
-        $pdo = DB::getInstance();
-
-        // Chuẩn bị truy vấn SQL
-        $sql = "INSERT INTO order_details (idDH, idSP, quantity, unit_price, units_price) VALUES (:idDH, :idSP, :quantity, :unit_price, :units_price)";
-
         try {
+            $pdo = DB::getInstance();
+            // Chuẩn bị truy vấn SQL
+            $sql = "INSERT INTO order_details (idDH, idSP, quantity, unit_price, units_price) VALUES (:idDH, :idSP, :quantity, :unit_price, :units_price)";
             // Sử dụng PDO để thực hiện truy vấn SQL
             $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(":idDH", $idDH);
-            $stmt->bindParam(":idSP", $idSP);
-            $stmt->bindParam(":quantity", $quantity);
-            $stmt->bindParam(":unit_price", $unit_price);
-            $stmt->bindParam(":units_price", $units_price);
-
+            $stmt->bindParam(":idDH", $data['idDH']);
+            $stmt->bindParam(":idSP", $data['idSP']);
+            $stmt->bindParam(":quantity", $data['quantity']);
+            $stmt->bindParam(":unit_price", $data['unit_price']);
+            $stmt->bindParam(":units_price", $data['units_price']);
             $stmt->execute();
-
             // Trả về true hoặc thông báo lưu thành công
-            return true;
         } catch (PDOException $e) {
             // Xử lý lỗi nếu có
-            return "Lỗi khi lưu dữ liệu vào cơ sở dữ liệu: " . $e->getMessage();
+            throw $e;
         }
     }
 }

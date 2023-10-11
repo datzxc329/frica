@@ -8,10 +8,9 @@
             if (is_file($view_file)) {
                 extract($data);//$data thành array
                 ob_start();
-                $content = ob_get_clean();
-                require_once('layouts/header.php');
                 require_once($view_file);
-                require_once('layouts/footer.php');
+                $content = ob_get_clean();
+                require_once('layouts/application.php');
             } /*else {
                 header('Location: index.php?controller=contact&action=error');
             }*/

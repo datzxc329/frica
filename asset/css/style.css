@@ -438,25 +438,89 @@ button {
 /* banner section end */
 
 /* catagary section start */
+
+
+/*.catagary_section {*/
+/*    width: 100%;*/
+/*    display: flex; !* Sử dụng display flex để căn giữa theo chiều ngang và dọc *!*/
+/*    justify-content: center; !* Căn giữa theo chiều ngang *!*/
+/*    align-items: center; !* Căn giữa theo chiều dọc *!*/
+/*    background-color: #143a51;*/
+/*    height: auto;*/
+/*    padding: 30px 0px;*/
+/*    box-sizing: border-box; !* Đảm bảo padding không làm thay đổi kích thước tổng thể *!*/
+/*}*/
+
+/*.catagary_main {*/
+/*    width: 80%; !* 80% cho phần chính *!*/
+/*    !* Không cần sử dụng float và width 100% *!*/
+/*}*/
+
+/*.catagary_left {*/
+/*    width: 20%; !* 20% cho phần trái *!*/
+/*    !* Không cần sử dụng float và width 100% *!*/
+/*}*/
+
+/*.catagary_right {*/
+/*    width: 80%; !* 80% cho phần phải *!*/
+/*    !* Không cần sử dụng float và width 100% *!*/
+/*}*/
+
+/*.categary_text {*/
+/*    font-size: 24px;*/
+/*    color: #fffefd;*/
+/*    text-align: center;*/
+/*    font-weight: bold;*/
+/*    text-transform: uppercase;*/
+/*    padding: 0px;*/
+/*    margin: 0; !* Loại bỏ margin mặc định *!*/
+/*}*/
+
+/*.catagary_menu {*/
+/*    text-align: center; !* Căn giữa nội dung trong catagary_menu *!*/
+
+/*}*/
+
+/*.catagary_menu ul {*/
+/*    margin: 0px;*/
+/*    padding: 0px;*/
+/*    list-style: none; !* Loại bỏ dấu chấm liền trước danh sách *!*/
+/*}*/
+
+/*.catagary_menu li {*/
+/*    display: inline; !* Hiển thị các mục menu cùng hàng ngang *!*/
+/*    font-size: 18px;*/
+/*    color: #ffffff;*/
+/*    padding: 0px 10px;*/
+/*}*/
+
+/*.catagary_menu li a {*/
+/*    color: #ffffff;*/
+/*    text-decoration: none; !* Loại bỏ gạch chân mặc định cho liên kết *!*/
+/*}*/
+
+
 .catagary_section{
     width: 100%;
     float: left;
     background-color: #143a51;
     height: auto;
     padding: 30px 0px;
+    text-align: center;
 }
 .catagary_main{
     width: 100%;
     float: left;
+    text-align: center;
 }
-.catagary_left{
-    width: 20%;
-    float: left;
-}
-.catagary_right{
-    width: 80%;
-    float: left;
-}
+/*.catagary_left{*/
+/*    width: 20%;*/
+/*    float: left;*/
+/*}*/
+/*.catagary_right{*/
+/*    width: 80%;*/
+/*    float: left;*/
+/*}*/
 .categary_text{
     width: 100%;
     float: left;

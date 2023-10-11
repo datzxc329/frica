@@ -5,12 +5,13 @@ $controllers = array(
     'computers' => ['computers'],
     'man_clothes' => ['man_clothes'],
     'woman_clothes' => ['woman_clothes'],
-    'accounts' => ['login', 'signup', 'forgotpassword', 'successlogin', 'successsignup', 'successchangepw'],
+    'accounts' => ['login', 'signup', 'forgotpassword', 'logout', 'successlogin', 'successsignup', 'successchangepw'],
     'search' => ['search', 'autocomplete'],
     'cart' => ['cart','delete', 'update_quantity'],
     'admin' => [''],
     'payments' => ['payments', 'success'],
     'other_products' => ['other_products'],
+    'product_detail' => ['product_detail'],
 );
 
 include_once ('controllers/' . str_replace('_', '', ucwords($controller, '_')) . 'Controller.php');

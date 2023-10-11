@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('controllers/BaseController.php');
 require_once('models/product.php');
 

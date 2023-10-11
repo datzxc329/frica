@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('controllers/BaseController.php');
 require_once('models/user.php');
 class AccountsController extends BaseController
@@ -7,14 +8,22 @@ class AccountsController extends BaseController
     {
         $this->folder = 'accounts';
     }
-    public function login(){
+    public function  account(){
 
+    }
+    public function login(){
         //so sánh dữ liệu trong form và dữ liệu trong database nếu có tồn tại thì đăng nhập thành công, còn không thì báo lỗi.
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Lấy dữ liệu từ form
-            $username = $_POST["username"];
-            $password = $_POST["password"];
-            if(User::checkLogin($username, $password)){
+            $loginData = [
+                'username' => $_POST["username"],
+                'password' => $_POST["password"],
+            ];
+
+            if(User::checkLogin($loginData)){
+                $_SESSION['user'] = [
+                    'username' => $loginData['username'],
+                ];
                 header("Location: index.php?controller=accounts&action=successlogin");
             }else{
                 echo '<script>alert("Tài khoản không tồn tại!");</script>';
@@ -23,35 +32,51 @@ class AccountsController extends BaseController
         }else {
             $this->render('login');
         }
+    }
+    public function logout(){
+        if(isset($_SESSION['user'])) {
+            session_destroy();
+        }
+        header("Location: index.php");
+    }
+    public function profile(){
 
     }
-    public function signup(){
+    public function signup()
+    {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Lấy dữ liệu từ form
+            // Lấy dữ liệu từ form
             $username = $_POST["username"];
-            $password = $_POST["password"];
-            $name = $_POST["name"];
-            $phone = $_POST["phone"];
-            $email = $_POST["email"];
-            $address = $_POST["address"];
-            if(User::saveSignup($username, $password, $name, $phone, $email, $address)){
-                header("Location: index.php?controller=accounts&action=successsignup");
-            }else{
+            // Check if the username already exists
+            if (User::isUsernameTaken($username)) {
                 echo '<script>alert("Tài khoản đã tồn tại!");</script>';
                 $this->render('signup');
+            } else {
+                $signupData = [
+                    'username' => $username,
+                    'password' => $_POST["password"],
+                    'name' => $_POST["name"],
+                    'phone' => $_POST["phone"],
+                    'email' => $_POST["email"],
+                    'address' => $_POST["address"],
+                ];
+                if (User::saveSignup($signupData)) {
+                    header("Location: index.php?controller=accounts&action=successsignup");
+                } else {
+                    echo '<script>alert("Lỗi khi lưu tài khoản!");</script>';
+                    $this->render('signup');
+                }
             }
         } else {
-            // Nếu không phải phương thức POST, hiển thị form
             $this->render('signup');
         }
-
-
     }
     public function forgotpassword(){
         $this->render('forgotpassword');
     }
     public function successlogin()
     {
+        print_r($_SESSION['user']['username']);
         $this->render('successlogin');
     }
     public function successsignup()
@@ -62,11 +87,4 @@ class AccountsController extends BaseController
     {
         $this->render('successchangepw');
     }
-
-
 }
-
-
-//giỏ hàng
-//signup
-//search

@@ -8,11 +8,9 @@ class CartController extends BaseController{
         $this->folder = 'cart';
     }
     public function add_cart() {
-
         $this->render('add_cart');
     }
     public function cart() {
-
         session_start();
         if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'] = [];
@@ -20,15 +18,11 @@ class CartController extends BaseController{
         // Lấy danh sách các mặt hàng trong giỏ hàng từ session (nếu có)
         $cartItems = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
         //unset($_SESSION['cart']);
-
         if (isset($_GET['idSP']) && is_numeric($_GET['idSP'])) {
-
             $productId = $_GET['idSP'];
             $productInfo = Product::getProductByIdSP($productId);
-
             // Kiểm tra xem sản phẩm có tồn tại không
             if ($productInfo) {
-
                 // Tạo đối tượng Product từ thông tin sản phẩm
                 $cartItem = new Product(
                     $productInfo['idSP'],
@@ -42,15 +36,11 @@ class CartController extends BaseController{
                 //print_r($cartItems);
                 //Kiểm tra xem sản phẩm đã có trong giỏ hàng chưa
                 if (isset($cartItems[$productId])) {
-
                     // Nếu đã có, tăng số lượng
-
                     $cartItems[$productId]->quantity += 1;
                 } else {
-
                     // Nếu chưa có, thêm sản phẩm vào giỏ hàng
                     $cartItems[$productId] = $cartItem;
-
                 }
                 $_SESSION['cart'] = $cartItems;
                 //$_SESSION['cart'] = [];
@@ -59,7 +49,6 @@ class CartController extends BaseController{
         }
         //print_r($_SESSION['cart']);
         //die('sdadasdasssssssssxxxxxxxxxxxxxxxxxxxx');
-
         $data = array('cartItems' => $cartItems);
         $this->render('cart', $data);
         ob_end_flush();

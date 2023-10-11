@@ -20,31 +20,25 @@ class Orders
         $this->date = $date;
     }
 
-    static function saveOrder($name, $email, $address, $phone, $total_price, $date){
-        // Kết nối đến cơ sở dữ liệu
-        $pdo = DB::getInstance();
-
-        // Chuẩn bị truy vấn SQL
-        $sql = "INSERT INTO orders (name, email, address, phone, total_price, date) VALUES (:name, :email, :address, :phone, :total_price, :date)";
-
+    static function saveOrder($data){
         try {
+            // Kết nối đến cơ sở dữ liệu
+            $pdo = DB::getInstance();
+            // Chuẩn bị truy vấn SQL
+            $sql = "INSERT INTO orders (name, email, address, phone, total_price, date) VALUES (:name, :email, :address, :phone, :total_price, :date)";
             // Sử dụng PDO để thực hiện truy vấn SQL
             $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(":name", $name);
-            $stmt->bindParam(":email", $email);
-            $stmt->bindParam(":address", $address);
-            $stmt->bindParam(":phone", $phone);
-            $stmt->bindParam(":total_price", $total_price);
-            $stmt->bindParam(":date", $date);
-
+            $stmt->bindParam(":name", $data['name']);
+            $stmt->bindParam(":email", $data['email']);
+            $stmt->bindParam(":address", $data['address']);
+            $stmt->bindParam(":phone", $data['phone']);
+            $stmt->bindParam(":total_price", $data['total_price']);
+            $stmt->bindParam(":date", $data['date']);
             $stmt->execute();
-
-
             // Trả về true hoặc thông báo lưu thành công
-            return true;
         } catch (PDOException $e) {
             // Xử lý lỗi nếu có
-            return "Lỗi khi lưu dữ liệu vào cơ sở dữ liệu: " . $e->getMessage();
+            throw $e;
         }
     }
 

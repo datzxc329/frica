@@ -1,5 +1,5 @@
 <?php
-echo "Document Root: " . $_SERVER['DOCUMENT_ROOT'];
+//echo "Document Root: " . $_SERVER['DOCUMENT_ROOT'];
 require_once ('models/connection.php');
 if(isset($_GET['controller'])){
     $controller = $_GET['controller'];

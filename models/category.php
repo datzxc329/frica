@@ -13,17 +13,20 @@ class Category
 
     static function searchWithCategoryName($name)
     {
-        $db = DB::getInstance();
-        $sql = 'SELECT p.* 
+        try {
+            $db = DB::getInstance();
+            $sql = 'SELECT p.* 
               FROM product p
               INNER JOIN category c ON p.idLSP = c.idLSP
               WHERE c.name LIKE :name';
-        $req = $db->prepare($sql);
-        $req->execute(array('name' => $name));
-        $items = $req->fetchAll();
-        return $items;
+            $req = $db->prepare($sql);
+            $req->execute(array('name' => $name));
+            $items = $req->fetchAll();
+            return $items;
+        } catch (PDOException $e) {
+            throw $e;
+        }
     }
-
 
 }
 

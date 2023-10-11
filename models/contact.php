@@ -15,29 +15,24 @@ class Contact
         $this->message = $message;
     }
 
-    static function save($name, $email, $phone, $message)
+    static function save($data)
     {
+        try {
         // Kết nối đến cơ sở dữ liệu
         $pdo = DB::getInstance();
-
         // Chuẩn bị truy vấn SQL
         $sql = "INSERT INTO contact (name, email, phone, message) VALUES (:name, :email, :phone, :message)";
-
-        try {
             // Sử dụng PDO để thực hiện truy vấn SQL
             $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(":name", $name);
-            $stmt->bindParam(":email", $email);
-            $stmt->bindParam(":phone", $phone);
-            $stmt->bindParam(":message", $message);
+            $stmt->bindParam(":name", $data['name']);
+            $stmt->bindParam(":email", $data['email']);
+            $stmt->bindParam(":phone", $data['phone']);
+            $stmt->bindParam(":message", $data['message']);
             $stmt->execute();
-
-
             // Trả về true hoặc thông báo lưu thành công
-            return true;
         } catch (PDOException $e) {
             // Xử lý lỗi nếu có
-            return "Lỗi khi lưu dữ liệu vào cơ sở dữ liệu: " . $e->getMessage();
+            throw $e;
         }
     }
 
