@@ -79,7 +79,7 @@ class User
                 return false;
             }
         } catch (PDOException $e) {
-                throw $e;
+            throw $e;
         }
     }
 }
