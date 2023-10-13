@@ -36,6 +36,7 @@ class Orders
             $stmt->bindParam(":date", $data['date']);
             $stmt->execute();
             // Trả về true hoặc thông báo lưu thành công
+            return true;
         } catch (PDOException $e) {
             // Xử lý lỗi nếu có
             throw $e;

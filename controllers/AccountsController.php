@@ -19,7 +19,6 @@ class AccountsController extends BaseController
                 'username' => $_POST["username"],
                 'password' => $_POST["password"],
             ];
-
             if(User::checkLogin($loginData)){
                 $_SESSION['user'] = [
                     'username' => $loginData['username'],
@@ -53,9 +52,12 @@ class AccountsController extends BaseController
                 'email' => $_POST["email"],
                 'address' => $_POST["address"],
             ];
+
             if(User::saveSignup($signupData)){
+
                 header("Location: index.php?controller=accounts&action=successsignup");
             }else{
+
                 echo '<script>alert("Tài khoản đã tồn tại!");</script>';
                 $this->render('signup');
             }

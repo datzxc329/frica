@@ -61,22 +61,21 @@ class User
             $stmt1->execute();
             $count = $stmt1->fetchColumn();
             if ($count == 0) {
+                // Hash the password
+                $hashedPassword = password_hash($data['password'], PASSWORD_BCRYPT);
                 // Chuẩn bị truy vấn SQL
                 $sql2 = "INSERT INTO user (username, password, name, phone, email, address) VALUES (:username, :password, :name, :phone, :email, :address)";
-                try {
-                    $stmt2 = $pdo->prepare($sql2);
-                    $stmt2->bindParam(":username", $data['username']);
-                    $stmt2->bindParam(":password", $data['password']);
-                    $stmt2->bindParam(":name", $data['name']);
-                    $stmt2->bindParam(":phone", $data['phone']);
-                    $stmt2->bindParam(":email", $data['email']);
-                    $stmt2->bindParam(":address", $data['address']);
-                    $stmt2->execute();
-                } catch (PDOException $e) {
-                    throw $e;
-                }
+                $stmt2 = $pdo->prepare($sql2);
+                $stmt2->bindParam(":username", $data['username']);
+                $stmt2->bindParam(":password", $hashedPassword); // Store the hashed password
+                $stmt2->bindParam(":name", $data['name']);
+                $stmt2->bindParam(":phone", $data['phone']);
+                $stmt2->bindParam(":email", $data['email']);
+                $stmt2->bindParam(":address", $data['address']);
+                $stmt2->execute();
+                return true;
             } else {
-                return false;
+                return false; // Provide a meaningful error message
             }
         } catch (PDOException $e) {
             throw $e;

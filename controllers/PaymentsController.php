@@ -8,13 +8,11 @@ class PaymentsController extends BaseController{
     {
         $this->folder = 'payments';
     }
-
     public function success(){
         $this->render('success');
     }
     public function payments() {
         session_start();
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Retrieve the list of products that were ordered from the cart
             $cartItems = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
@@ -27,7 +25,6 @@ class PaymentsController extends BaseController{
                 );
                 Product::updateProductQuantity($data);
             }
-
             // Prepare the data for the order
             $orderData = [
                 'name' => $_POST["name"],
@@ -37,37 +34,36 @@ class PaymentsController extends BaseController{
                 'date' => date("Y-m-d H:i:s"),
                 'total_price' => isset($_SESSION["total_price"]) ? $_SESSION["total_price"] : 0,
             ];
-
             // Save the order
             $result = Orders::saveOrder($orderData);
-
-            if ($result === true) {
-                // Get the ID of the newly created order
-                $pdo = DB::getInstance();
-                $orderId = $pdo->lastInsertId();
-
-                // Loop through the cart items and save order details for each item
-                foreach ($cartItems as $productId => $cartItem) {
-                    $quantityOrdered = $cartItem->quantity;
-                    $unitPrice = $cartItem->price;
-                    $unitsPrice = $cartItem->quantity * $cartItem->price;
-
-                    // Prepare the data for the order detail
-                    $orderDetailData = [
-                        'order_id' => $orderId,
-                        'product_id' => $productId,
-                        'quantity_ordered' => $quantityOrdered,
-                        'unit_price' => $unitPrice,
-                        'units_price' => $unitsPrice,
-                    ];
-
-                    // Save the order detail
-                    Order_details::saveOrderDetail($orderDetailData);
+            try {
+                if ($result === true) {
+                    // Get the ID of the newly created order
+                    $pdo = DB::getInstance();
+                    $orderId = $pdo->lastInsertId();
+                    // Loop through the cart items and save order details for each item
+                    foreach ($cartItems as $productId => $cartItem) {
+                        $quantityOrdered = $cartItem->quantity;
+                        $unitPrice = $cartItem->price;
+                        $unitsPrice = $cartItem->quantity * $cartItem->price;
+                        // Prepare the data for the order detail
+                        $orderDetailData = [
+                            'order_id' => $orderId,
+                            'product_id' => $productId,
+                            'quantity_ordered' => $quantityOrdered,
+                            'unit_price' => $unitPrice,
+                            'units_price' => $unitsPrice,
+                        ];
+                        // Save the order detail
+                        Order_details::saveOrderDetail($orderDetailData);
+                    }
+                    unset($_SESSION['cart']);
+                    $this->render('success');
+                } else {
+                    echo 'Lỗi khi lưu đơn hàng: ' . $result;
                 }
-                unset($_SESSION['cart']);
-                $this->render('success');
-            } else {
-                echo 'Lỗi khi lưu đơn hàng: ' . $result;
+            }catch (Exception $e){
+                throw $e;
             }
         } else {
             // If it's not a POST request, display the payment form

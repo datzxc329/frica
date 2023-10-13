@@ -70,23 +70,23 @@ $productsForCurrentPage = array_slice($other_products, $offset, $productsPerPage
                         <div class="cart_bt_1"><a href="index.php?controller=cart&action=cart&idSP=<?php echo $other_product->idSP; ?>">Add To Cart</a></div>
                     </div>
                 <?php endforeach; ?>
-                <div class="pagination">
-                    <?php if ($totalPages > 1): ?>
-                        <?php if ($current_page > 1): ?>
-                            <a href="?controller=other_products&action=other_products&page=<?php echo $current_page - 1; ?>">Previous</a>
-                        <?php endif; ?>
-                        <?php for ($page = 1; $page <= $totalPages; $page++): ?>
-                            <?php if ($page == $current_page): ?>
-                                <span class="current-page"><?php echo $page; ?></span>
-                            <?php else: ?>
-                                <a href="?controller=other_products&action=other_products&page=<?php echo $page; ?>"><?php echo $page; ?></a>
-                            <?php endif; ?>
-                        <?php endfor; ?>
-                        <?php if ($current_page < $totalPages): ?>
-                            <a href="?controller=other_products&action=other_products&page=<?php echo $current_page + 1; ?>">Next</a>
-                        <?php endif; ?>
+            </div>
+            <div class="pagination">
+                <?php if ($totalPages > 1): ?>
+                    <?php if ($current_page > 1): ?>
+                        <a href="?controller=other_products&action=other_products&page=<?php echo $current_page - 1; ?>">Previous</a>
                     <?php endif; ?>
-                </div>
+                    <?php for ($page = 1; $page <= $totalPages; $page++): ?>
+                        <?php if ($page == $current_page): ?>
+                            <span class="current-page"><?php echo $page; ?></span>
+                        <?php else: ?>
+                            <a href="?controller=other_products&action=other_products&page=<?php echo $page; ?>"><?php echo $page; ?></a>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                    <?php if ($current_page < $totalPages): ?>
+                        <a href="?controller=other_products&action=other_products&page=<?php echo $current_page + 1; ?>">Next</a>
+                    <?php endif; ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>

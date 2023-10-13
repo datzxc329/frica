@@ -115,7 +115,7 @@
 <div class="catagary_section layout_padding">
     <div class="container">
         <div class="catagary_main">
-            <h2 class="categary_text">Category<br><br></h2>
+            <h2 class="categary_text">Category</h2>
             <div class="catagary_menu">
                 <ul>
                     <li><a href="index.php?controller=man_clothes&action=man_clothes">Man's Fashion</a></li>

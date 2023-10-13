@@ -521,6 +521,25 @@ button {
 /*    width: 80%;*/
 /*    float: left;*/
 /*}*/
+.catagary_section{
+    width: 100%;
+    float: left;
+    background-color: #143a51;
+    height: auto;
+    padding: 30px 0px;
+}
+.catagary_main{
+    width: 100%;
+    float: left;
+}
+.catagary_left{
+    width: 20%;
+    float: left;
+}
+.catagary_right{
+    width: 80%;
+    float: left;
+}
 .categary_text{
     width: 100%;
     float: left;
@@ -557,6 +576,7 @@ button {
     width: 100%;
     float: left;
 }
+
 .box_man{
     width: 100%;
     border: 1px solid #9fa0a1;

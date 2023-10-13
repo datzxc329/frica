@@ -50,29 +50,6 @@
             height: 24px; /* Độ cao của biểu tượng */
             transition: background-color 0.3s ease; /* Hiệu ứng màu nền */
         }
-        body, input {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 12px;
-        }
-        #searchs {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            width: 200px;
-        }
-        #searchs li {
-            padding: 10px;
-            background: #FFF;
-            border-bottom: #F0F0F0 1px solid;
-        }
-        #searchs li:hover {
-            background:#F0F0F0;
-            cursor: pointer;
-            cursor: hand;
-        }
-        #search {
-            padding: 10px;
-        }
         #accountForm {
             display: none;
             position: absolute;
@@ -101,7 +78,6 @@
     </style>
 </head>
 <body>
-
 <!-- header section start -->
 <div class="header_section haeder_main">
     <div class="container-fluid">
@@ -121,7 +97,6 @@
                 <div class="login_text">
                     <ul>
                         <!--<li><a href="/hl/index.php?controller=accounts&action=login"><img src="/hl/asset/images/user-icon.png"></a></li>-->
-
                         <?php
                         if (!isset($_SESSION['user'])) {
                             echo '<li><a href="/hl/index.php?controller=accounts&action=login"><img src="/hl/asset/images/user-icon.png"></a></li>';
@@ -139,7 +114,6 @@
                                 </div>';
                         }
                         ?>
-
                         <li><a href="/hl/index.php?controller=cart&action=cart"><img src="/hl/asset/images/trolly-icon.png"></a></li>
                         <li>
                             <a href="javascript:void(0);" onclick="toggleSearch()">
@@ -159,7 +133,6 @@
             </form>
     </div>
     <script>
-
         var searchForm = document.getElementById('searchForm');
         function toggleSearch() {
             if (searchForm.style.display === 'block') {
@@ -168,6 +141,20 @@
                 searchForm.style.display = 'block';
             }
         }
+
+        $(document).ready(function() {
+            $("#search-box").keyup(function(){
+                var searchQuery = $(this).val();
+                $.ajax({
+                    method: "POST",
+                    url: "controllers/SearchController.php", // Replace with the actual script name
+                    data: { query: searchQuery }
+                })
+                    .done(function(data){
+                        $("#suggestions-box").html(data);
+                    });
+            });
+        });
 
         function account() {
             // Hiển thị hoặc ẩn form đăng nhập dựa trên trạng thái hiện tại
@@ -181,7 +168,6 @@
         // function logout() {
         //     window.location.href = 'index.php';
         // }
-
         function performLogout() {
             fetch('index.php?controller=accounts&action=logout')
                 .then(response => {
@@ -210,13 +196,11 @@
                     console.error('Lỗi khi thực hiện việc xem thông tin cá nhân:', error);
                 });
         }
-
         var suggestions = ['computers', 'laptop hp', 'laptop dell'];
         //var suggestions = <?php //echo json_encode($_SESSION['suggestions']); ?>
         // Lấy tham chiếu đến trường nhập văn bản và hộp gợi ý
         var searchInput = document.getElementById('search-box');
         var suggestionBox = document.getElementById('suggestion-box');
-
         // Kích hoạt tính năng autocomplete cho trường nhập văn bản
         autocomplete(searchInput, suggestions);
 
@@ -321,6 +305,7 @@
 
 </body>
 </html>
+
 <!-- header section end -->
 
 <?php echo $content; ?>

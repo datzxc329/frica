@@ -1,9 +1,7 @@
 
-<!--???-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <?php
 ?>
-
 <div class="computers_section layout_padding">
     <div class="container">
         <h1 class="computers_taital">Kết quả tìm kiếm</h1>
@@ -20,7 +18,6 @@
 <!--                --><?php //print_r($searchProduct) ?>
                     <div class="col-md-4">
                         <div class="computer_img"><img src="/hl/asset/images/<?php echo $searchProduct['img']; ?>"></div>
-
                         <h4 class="computer_text"><?php echo $searchProduct['name']; ?></h4>
                         <div class="computer_text_main">
                             <h4 class="dell_text"><?php echo "Còn lại: " . $searchProduct['quantity']; ?></h4>
@@ -35,7 +32,6 @@
 <!--                    --><?php //print_r($searchCategories) ?>
                     <div class="col-md-4">
                         <div class="computer_img"><img src="/hl/asset/images/<?php echo $searchCategory['img']; ?>"></div>
-
                         <h4 class="computer_text"><?php echo $searchCategory['name']; ?></h4>
                         <div class="computer_text_main">
                             <h4 class="dell_text"><?php echo "Còn lại: " . $searchCategory['quantity']; ?></h4>
@@ -45,7 +41,6 @@
                         <div class="cart_bt_1"><a href="index.php?controller=cart&action=cart&idSP=<?php echo $searchCategory['idSP']; ?>">Add To Cart</a></div>
                     </div>
                 <?php endforeach; ?>
-
             </div>
         </div>
     </div>

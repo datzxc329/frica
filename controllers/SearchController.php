@@ -14,6 +14,7 @@ class SearchController extends BaseController
         $query = isset($_GET['query']) ? $_GET['query'] : '';
         $searchProducts = Product::searchWithProductName($query);
         $searchCategories = Category::searchWithCategoryName($query);
+
         $suggestions = [];
         //Thêm tên sản phẩm từ kết quả tìm kiếm vào mảng suggestions
         foreach ($searchProducts as $product) {
@@ -25,6 +26,7 @@ class SearchController extends BaseController
         }
         $_SESSION['suggestions'] = $suggestions;
         //print_r(json_encode($_SESSION['suggestions']));
+
         $data = array(
             'searchProducts' => $searchProducts,
             'searchCategories' => $searchCategories,
@@ -32,5 +34,4 @@ class SearchController extends BaseController
         //print_r($data);
         $this->render('search', $data);
     }
-
 }
