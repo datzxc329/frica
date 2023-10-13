@@ -112,20 +112,25 @@
 
 <!-- banner section end -->
 <!-- catagary section start -->
+
 <div class="catagary_section layout_padding">
     <div class="container">
         <div class="catagary_main">
-            <h2 class="categary_text">Category</h2>
-            <div class="catagary_menu">
-                <ul>
-                    <li><a href="index.php?controller=man_clothes&action=man_clothes">Man's Fashion</a></li>
-                    <li><a href="index.php?controller=woman_clothes&action=woman_clothes">Woman Fashion</a></li>
-                    <li><a href="index.php?controller=other_products&action=other_products">Mobiles</a></li>
-                    <li><a href="index.php?controller=computers&action=computers">Computers</a></li>
-                    <li><a href="index.php?controller=other_products&action=other_products">Watches</a></li>
-                    <li><a href="index.php?controller=other_products&action=other_products">Kitchen</a></li>
-                    <li><a href="index.php?controller=other_products&action=other_products">Sports</a></li>
-                </ul>
+            <div class="catagary_left">
+                <h2 class="categary_text">Category</h2>
+            </div>
+            <div class="catagary_right">
+                <div class="catagary_menu">
+                    <ul>
+                        <li><a href="index.php?controller=man_clothes&action=man_clothes">Man's Fashion</a></li>
+                        <li><a href="index.php?controller=woman_clothes&action=woman_clothes">Woman Fashion</a></li>
+                        <li><a href="index.php?controller=other_products&action=other_products">Mobiles</a></li>
+                        <li><a href="index.php?controller=computers&action=computers">Computers</a></li>
+                        <li><a href="index.php?controller=other_products&action=other_products">Watches</a></li>
+                        <li><a href="index.php?controller=other_products&action=other_products">Kitchen</a></li>
+                        <li><a href="index.php?controller=other_products&action=other_products">Sports</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -172,7 +177,18 @@ $productsForCurrentPage = array_slice($allProducts, $offset, $productsPerPage);
                                 <?php echo "Giá: " . number_format($allProduct->price) . " VNĐ"; ?>
                             </h6>
                         </div>
-                        <div class="cart_bt_1"><a href="index.php?controller=cart&action=cart&idSP=<?php echo $allProduct->idSP; ?>">Add To Cart</a></div>
+                        <!--<div class="cart_bt_1"><a href="index.php?controller=cart&action=cart&idSP=<?php /*echo $allProduct->idSP; */?>">Add To Cart</a></div>-->
+                        <?php if ($allProduct->quantity > 0) : ?>
+                            <div class="cart_bt_1">
+                                <a href="index.php?controller=cart&action=cart&idSP=<?php echo $allProduct->idSP; ?>">Add To Cart</a>
+                            </div>
+                        <?php else : ?>
+                            <div class="cart_bt_1">
+                                <span>Đã hết hàng</span>
+                            </div>
+                        <?php endif; ?>
+
+
                     </div>
                 <?php endforeach; ?>
             </div>

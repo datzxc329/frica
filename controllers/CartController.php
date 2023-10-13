@@ -56,7 +56,6 @@ class CartController extends BaseController{
     public function delete() {
         session_start();
         // Kiểm tra xem yêu cầu có phải là POST không
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Lấy product_id từ yêu cầu POST
             $product_id = $_POST['product_id'];
@@ -73,18 +72,15 @@ class CartController extends BaseController{
     }
     public function update_quantity() {
         session_start();
-
         // Kiểm tra xem yêu cầu có phải là POST không
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Lấy product_id và quantity từ yêu cầu POST
             $product_id = $_POST['product_id'];
             $quantity = $_POST['quantity'];
-
             // Kiểm tra xem sản phẩm có tồn tại trong giỏ hàng không
             if (isset($_SESSION['cart'][$product_id])) {
                 // Lấy số lượng tồn kho của sản phẩm từ cơ sở dữ liệu
                 $productQuantity = Product::getProductQuantity($product_id);
-
                 // Đảm bảo quantity là một số nguyên dương
                 $quantity = intval($quantity);
                 if ($quantity > 0 && $quantity <= $productQuantity) {
