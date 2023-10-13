@@ -36,11 +36,10 @@ class PaymentsController extends BaseController{
             ];
             // Save the order
             $result = Orders::saveOrder($orderData);
-            try {
-                if ($result === true) {
+            try{
+                if ($result !== false) {
                     // Get the ID of the newly created order
-                    $pdo = DB::getInstance();
-                    $orderId = $pdo->lastInsertId();
+                    $orderId = $result; // $result now holds the order ID
                     // Loop through the cart items and save order details for each item
                     foreach ($cartItems as $productId => $cartItem) {
                         $quantityOrdered = $cartItem->quantity;
@@ -59,8 +58,6 @@ class PaymentsController extends BaseController{
                     }
                     unset($_SESSION['cart']);
                     $this->render('success');
-                } else {
-                    echo 'Lỗi khi lưu đơn hàng: ' . $result;
                 }
             }catch (Exception $e){
                 throw $e;

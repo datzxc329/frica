@@ -25,13 +25,14 @@ class Order_details
             $sql = "INSERT INTO order_details (idDH, idSP, quantity, unit_price, units_price) VALUES (:idDH, :idSP, :quantity, :unit_price, :units_price)";
             // Sử dụng PDO để thực hiện truy vấn SQL
             $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(":idDH", $data['idDH']);
-            $stmt->bindParam(":idSP", $data['idSP']);
-            $stmt->bindParam(":quantity", $data['quantity']);
+            $stmt->bindParam(":idDH", $data['order_id']);
+            $stmt->bindParam(":idSP", $data['product_id']);
+            $stmt->bindParam(":quantity", $data['quantity_ordered']);
             $stmt->bindParam(":unit_price", $data['unit_price']);
             $stmt->bindParam(":units_price", $data['units_price']);
             $stmt->execute();
             // Trả về true hoặc thông báo lưu thành công
+            return true;
         } catch (PDOException $e) {
             // Xử lý lỗi nếu có
             throw $e;

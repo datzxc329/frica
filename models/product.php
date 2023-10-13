@@ -8,7 +8,6 @@ class Product
     public $quantity;
     public $description;
     public $img;
-    public $categories = [];
 
     function __construct($idSP, $idLSP, $name, $price, $quantity, $description, $img)
     {
@@ -19,7 +18,6 @@ class Product
         $this->quantity = $quantity;
         $this->description = $description;
         $this->img = $img;
-        $this->categories = [];
     }
 
     static function showProducts()
